@@ -20,9 +20,9 @@ $db->exec("
 ");
 
 $users = [
-    ['username' => 'admin',    'password' => 'Admin@123', 'role' => 'admin'],
-    ['username' => 'mentor1',  'password' => 'Pass@123',  'role' => 'mentor'],
-    ['username' => 'student1', 'password' => 'Pass@123', 'role' => 'student'],
+    ['username' => 'admin',    'password' => 'Admin@123', 'role' => 'admin',  'email' => 'admin@rmkcet.ac.in'],
+    ['username' => 'mentor1',  'password' => 'Pass@123',  'role' => 'mentor', 'email' => 'mentor1@rmkcet.ac.in'],
+    ['username' => 'student1', 'password' => 'Pass@123',  'role' => 'student', 'email' => 'student1@rmkcet.ac.in'],
 ];
 
 foreach ($users as $u) {
@@ -32,11 +32,11 @@ foreach ($users as $u) {
     $row = $stmt->fetch();
 
     if ($row) {
-        $up = $db->prepare("UPDATE users SET password_hash = ?, role = ? WHERE username = ?");
-        $up->execute([$hash, $u['role'], $u['username']]);
+        $up = $db->prepare("UPDATE users SET password_hash = ?, role = ?, email = ? WHERE username = ?");
+        $up->execute([$hash, $u['role'], $u['email'], $u['username']]);
     } else {
-        $ins = $db->prepare("INSERT INTO users (username, password_hash, role, email) VALUES (?, ?, ?, NULL)");
-        $ins->execute([$u['username'], $hash, $u['role']]);
+        $ins = $db->prepare("INSERT INTO users (username, password_hash, role, email) VALUES (?, ?, ?, ?)");
+        $ins->execute([$u['username'], $hash, $u['role'], $u['email']]);
     }
 }
 

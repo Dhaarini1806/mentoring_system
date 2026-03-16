@@ -68,8 +68,8 @@
         <form method="post" action="<?php echo htmlspecialchars(BASE_URL . 'index.php', ENT_QUOTES, 'UTF-8'); ?>">
             <input type="hidden" name="<?php echo CSRF_TOKEN_NAME; ?>" value="<?php echo generate_csrf_token(); ?>">
             <div class="mb-3">
-                <label class="form-label">Username</label>
-                <input type="text" name="username" class="form-control" required autocomplete="username">
+                <label class="form-label">Email ID (@rmkcet.ac.in)</label>
+                <input type="email" name="email" class="form-control" required autocomplete="email" placeholder="username@rmkcet.ac.in" pattern="[a-zA-Z0-9._%+-]+@rmkcet\.ac\.in$" title="Please use your @rmkcet.ac.in email address">
             </div>
             <div class="mb-3">
                 <label class="form-label">Password</label>

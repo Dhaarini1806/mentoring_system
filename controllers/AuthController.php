@@ -8,15 +8,17 @@ class AuthController {
     public function login() {
         $errors = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $username = sanitize($_POST['username'] ?? '');
+            $email = sanitize($_POST['email'] ?? '');
             $password = $_POST['password'] ?? '';
             $csrf = $_POST[CSRF_TOKEN_NAME] ?? '';
 
-            if (!verify_csrf_token($csrf)) {
+            if (!empty($email) && !str_ends_with(strtolower($email), '@rmkcet.ac.in')) {
+                $errors[] = 'Please use your institutional email address (@rmkcet.ac.in).';
+            } elseif (!verify_csrf_token($csrf)) {
                 $errors[] = 'Invalid CSRF token.';
             } else {
                 $userModel = new User();
-                $user = $userModel->findByUsername($username);
+                $user = $userModel->findByEmail($email);
                 if ($user && $userModel->verifyPassword($user, $password)) {
                     $_SESSION['user'] = [
                         'id' => $user['id'],
@@ -38,7 +40,7 @@ class AuthController {
                     }
                     exit;
                 } else {
-                    $errors[] = 'Invalid username or password.';
+                    $errors[] = 'Invalid email or password.';
                 }
             }
         }
