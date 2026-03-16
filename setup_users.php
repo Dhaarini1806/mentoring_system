@@ -23,6 +23,7 @@ $users = [
     ['username' => 'admin',    'password' => 'Admin@123', 'role' => 'admin',  'email' => 'admin@rmkcet.ac.in'],
     ['username' => 'mentor1',  'password' => 'Pass@123',  'role' => 'mentor', 'email' => 'mentor1@rmkcet.ac.in'],
     ['username' => 'student1', 'password' => 'Pass@123',  'role' => 'student', 'email' => 'student1@rmkcet.ac.in'],
+    ['username' => '24224.cs', 'password' => 'Cse@123',   'role' => 'student', 'email' => '24224.cs@rmkcet.ac.in'],
 ];
 
 foreach ($users as $u) {

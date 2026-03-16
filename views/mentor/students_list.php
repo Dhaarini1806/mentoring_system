@@ -51,7 +51,7 @@ $students = $students ?? [];
     <table class="table table-striped table-hover align-middle">
         <thead class="table-light">
             <tr>
-                <th>Roll No</th>
+                <th>Register No</th>
                 <th>Name</th>
                 <th>Domain</th>
                 <th>Classification</th>
@@ -72,7 +72,7 @@ $students = $students ?? [];
                     data-domain="<?php echo sanitize($s['domain'] ?? ''); ?>" 
                     data-honours="<?php echo (int)($s['is_honours'] ?? 0); ?>" 
                     data-minor="<?php echo (int)($s['is_minor'] ?? 0); ?>">
-                    <td><?php echo sanitize($s['roll_no'] ?? '—'); ?></td>
+                    <td><?php echo sanitize($s['register_number'] ?: $s['roll_no'] ?: '—'); ?></td>
                     <td><?php echo sanitize($name); ?></td>
                     <td><span class="small"><?php echo sanitize($s['domain'] ?? '—'); ?></span></td>
                     <td>

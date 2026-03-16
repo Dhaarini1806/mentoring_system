@@ -83,7 +83,8 @@ class AdminController {
                 'is_minor' => isset($_POST['is_minor']) ? 1 : 0,
             ];
             if ($id <= 0) {
-                $data['user_id'] = (int)($_POST['user_id'] ?? 0);
+                $uid = (int)($_POST['user_id'] ?? 0);
+                $data['user_id'] = ($uid > 0) ? $uid : null;
                 $studentModel->create($data);
             } else {
                 $studentModel->update($id, $data);
@@ -131,8 +132,9 @@ class AdminController {
                 die('Invalid CSRF token');
             }
             $mentorModel = new Mentor();
+            $user_id = (int)($_POST['user_id'] ?? 0);
             $data = [
-                'user_id' => (int)($_POST['user_id'] ?? 0),
+                'user_id' => ($user_id > 0) ? $user_id : null,
                 'staff_id' => sanitize($_POST['staff_id']),
                 'name' => sanitize($_POST['name']),
                 'department' => sanitize($_POST['department']),

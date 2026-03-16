@@ -16,6 +16,14 @@ class User {
         return $stmt->fetch();
     }
 
+    public function findByEmail($email) {
+        $sql = "SELECT * FROM users WHERE email = :email LIMIT 1";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
+
     public function create($username, $password, $role, $email = null) {
         $hash = password_hash($password, PASSWORD_DEFAULT);
         $sql = "INSERT INTO users (username, password_hash, role, email) 

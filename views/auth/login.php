@@ -59,11 +59,22 @@
             <p class="small opacity-75">RMK College of Engineering and Technology</p>
         </div>
         <?php if (!empty($errors)): ?>
-            <div class="alert alert-danger">
+            <div class="alert alert-danger py-2 small">
                 <?php foreach ($errors as $e): ?>
                     <div><?php echo $e; ?></div>
                 <?php endforeach; ?>
             </div>
+        <?php endif; ?>
+
+        <?php 
+        $get_error = $_GET['error'] ?? '';
+        if ($get_error): 
+            $msg = 'An error occurred during authentication.';
+            if ($get_error === 'invalid_domain') $msg = 'Please use your institutional @rmkcet.ac.in email.';
+            if ($get_error === 'user_not_found') $msg = 'Account not found. Please contact admin.';
+            if ($get_error === 'google_auth_failed') $msg = 'Google authentication failed.';
+        ?>
+            <div class="alert alert-danger py-2 small"><?php echo htmlspecialchars($msg); ?></div>
         <?php endif; ?>
         <form method="post" action="<?php echo htmlspecialchars(BASE_URL . 'index.php', ENT_QUOTES, 'UTF-8'); ?>">
             <input type="hidden" name="<?php echo CSRF_TOKEN_NAME; ?>" value="<?php echo generate_csrf_token(); ?>">
@@ -77,6 +88,15 @@
             </div>
             <button type="submit" class="btn btn-login w-100">Login</button>
         </form>
+
+        <div class="text-center mt-4 mb-3">
+            <span class="text-white-50">OR</span>
+        </div>
+
+        <a href="<?php echo BASE_URL; ?>index.php?page=google_login" class="btn btn-outline-light w-100 d-flex align-items-center justify-content-center gap-2">
+            <img src="https://www.gstatic.com/images/branding/product/1x/googleg_48dp.png" alt="Google Logo" style="width: 20px; height: 20px;">
+            Sign in with Google
+        </a>
     </div>
 </div>
 </body>

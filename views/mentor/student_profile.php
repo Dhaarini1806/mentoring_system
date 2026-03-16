@@ -8,7 +8,7 @@ if ($name === '') $name = $student['name'] ?? '—';
 ?>
 <div class="mb-3">
     <a href="<?php echo BASE_URL; ?>mentor/index.php?page=students" class="btn btn-outline-secondary btn-sm"><i class="bi bi-arrow-left"></i> Back</a>
-    <h3 class="mt-2"><?php echo sanitize($name); ?> — <?php echo sanitize($student['roll_no'] ?? ''); ?></h3>
+    <h3 class="mt-2"><?php echo sanitize($name); ?> — <?php echo sanitize($student['register_number'] ?: $student['roll_no'] ?: ''); ?></h3>
 </div>
 
 <div class="row g-3 mb-3">

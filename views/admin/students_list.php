@@ -23,7 +23,7 @@ include __DIR__ . '/../partials/sidebar.php';
     <thead class="table-light">
         <tr>
             <th>#</th>
-            <th>Roll No</th>
+            <th>Register No</th>
             <th>Name</th>
             <th>Department</th>
             <th>Sem</th>
@@ -35,7 +35,7 @@ include __DIR__ . '/../partials/sidebar.php';
     <?php foreach ($students as $s): ?>
         <tr>
             <td><?php echo (int)$s['id']; ?></td>
-            <td><?php echo sanitize($s['roll_no']); ?></td>
+            <td><?php echo sanitize($s['register_number'] ?: $s['roll_no'] ?: '—'); ?></td>
             <td><?php echo sanitize($s['first_name'] . ' ' . $s['last_name']); ?></td>
             <td><?php echo sanitize($s['branch'] ?? $s['department'] ?? '—'); ?></td>
             <td><?php echo (int)($s['semester'] ?? 0); ?></td>

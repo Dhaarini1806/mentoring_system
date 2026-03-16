@@ -31,6 +31,8 @@ $mentor = $mentor ?: [];
                     </select>
                 </div>
             </div>
+            <?php else: ?>
+                <input type="hidden" name="user_id" value="<?php echo (int)($mentor['user_id'] ?? 0); ?>">
             <?php endif; ?>
 
             <div class="row mb-3">

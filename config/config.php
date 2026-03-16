@@ -19,6 +19,11 @@ define('DB_NAME', 'mentoring_system');
 define('DB_USER', 'root');
 define('DB_PASS', ''); // default XAMPP
 
+// Google OAuth Settings
+define('GOOGLE_CLIENT_ID', 'YOUR_GOOGLE_CLIENT_ID');
+define('GOOGLE_CLIENT_SECRET', 'YOUR_GOOGLE_CLIENT_SECRET');
+define('GOOGLE_REDIRECT_URI', BASE_URL . 'index.php?page=google_callback');
+
 // CSRF settings
 define('CSRF_TOKEN_NAME', 'csrf_token');
 

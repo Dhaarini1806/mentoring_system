@@ -36,12 +36,12 @@ $student = $student ?: [];
         <div class="card-body">
             <div class="row g-2 mb-2">
                 <div class="col-md-4">
-                    <label class="form-label">Roll No / Admission No <span class="text-danger">*</span></label>
-                    <input type="text" name="roll_no" class="form-control" required value="<?php echo sanitize($student['roll_no'] ?? ''); ?>">
+                    <label class="form-label">Register Number <span class="text-danger">*</span></label>
+                    <input type="text" name="register_number" class="form-control" required value="<?php echo sanitize($student['register_number'] ?? ''); ?>">
                 </div>
                 <div class="col-md-4">
-                    <label class="form-label">Register Number</label>
-                    <input type="text" name="register_number" class="form-control" value="<?php echo sanitize($student['register_number'] ?? ''); ?>">
+                    <label class="form-label">Roll No / Admission No</label>
+                    <input type="text" name="roll_no" class="form-control" value="<?php echo sanitize($student['roll_no'] ?? ''); ?>">
                 </div>
                 <div class="col-md-4">
                     <label class="form-label">Academic Year</label>
