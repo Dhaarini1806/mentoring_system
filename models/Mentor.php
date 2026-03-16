@@ -31,7 +31,7 @@ class Mentor {
     }
 
     public function update($id, $data) {
-        $sql = "UPDATE mentors SET staff_id=:staff_id, name=:name, department=:department,
+        $sql = "UPDATE mentors SET user_id=:user_id, staff_id=:staff_id, name=:name, department=:department,
                 designation=:designation, contact_no=:contact_no, email=:email WHERE id=:id";
         $stmt = $this->db->prepare($sql);
         $stmt->bindValue(':id', (int)$id, PDO::PARAM_INT);

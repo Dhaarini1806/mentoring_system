@@ -87,8 +87,24 @@ $student = $student ?: [];
                     </select>
                 </div>
             </div>
-        </div>
-    </div>
+            <div class="row g-2">
+                <div class="col-md-4">
+                    <label class="form-label">Domain</label>
+                    <input type="text" name="domain" class="form-control" placeholder="e.g. Cyber Security" value="<?php echo sanitize($student['domain'] ?? ''); ?>">
+                </div>
+                <div class="col-md-4 p-4">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="is_honours" value="1" id="honoursCheck" <?php echo ($student['is_honours'] ?? 0) ? 'checked' : ''; ?>>
+                        <label class="form-check-label" for="honoursCheck">Is Honours Student?</label>
+                    </div>
+                </div>
+                <div class="col-md-4 p-4">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="is_minor" value="1" id="minorCheck" <?php echo ($student['is_minor'] ?? 0) ? 'checked' : ''; ?>>
+                        <label class="form-check-label" for="minorCheck">Is Minor Student?</label>
+                    </div>
+                </div>
+            </div>
 
     <div class="card shadow-sm border-0 mb-3">
         <div class="card-header bg-white"><strong>Personal info</strong></div>

@@ -9,7 +9,14 @@ class Student {
         'user_id', 'roll_no', 'register_number', 'academic_year', 'course', 'branch',
         'lateral_entry', 'quota', 'first_name', 'last_name', 'dob', 'age', 'gender',
         'email', 'mobile_no', 'department', 'program', 'semester', 'contact_no',
-        'address', 'address_communication', 'address_permanent', 'community', 'caste', 'nationality', 'religion'
+        'address', 'address_communication', 'address_permanent', 'community', 'caste', 'nationality', 'religion',
+        'mother_tongue', 'linguistic_minority', 'goals', 'how_heard_about_college', 'residency_type', 'mode_of_transport', 'boarding_place', 'blood_group',
+        'father_name', 'father_mobile', 'father_email', 'father_qualification', 'father_occupation', 'father_office_address', 'father_annual_income',
+        'mother_name', 'mother_mobile', 'mother_email', 'mother_qualification', 'mother_occupation', 'mother_office_address', 'mother_annual_income',
+        'x_school_name', 'x_register_no', 'x_board', 'x_medium', 'x_passing_month_year', 'x_marks_json', 'x_total_marks', 'x_percentage_cgpa', 'x_marksheet_path',
+        'xii_school_name', 'xii_register_no', 'xii_board', 'xii_medium', 'xii_passing_month_year', 'xii_marks_json', 'xii_total_marks', 'xii_percentage_cgpa', 'xii_marksheet_path',
+        'aadhar_number', 'aadhar_path', 'is_first_graduate', 'fg_certificate_path', 'reference',
+        'domain', 'is_honours', 'is_minor'
     ];
 
     public function __construct() {

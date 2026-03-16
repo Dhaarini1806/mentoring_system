@@ -1,5 +1,8 @@
 <?php
 // Global configuration
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 
 // Base URL must point to application root (mentoring_system/), not the current script directory.
 // When inside admin/index.php, SCRIPT_NAME is e.g. /mentoring_system/admin/index.php — we want base = /mentoring_system/

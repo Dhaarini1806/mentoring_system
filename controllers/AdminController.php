@@ -78,6 +78,9 @@ class AdminController {
                 'caste' => sanitize($_POST['caste'] ?? ''),
                 'nationality' => sanitize($_POST['nationality'] ?? ''),
                 'religion' => sanitize($_POST['religion'] ?? ''),
+                'domain' => sanitize($_POST['domain'] ?? ''),
+                'is_honours' => isset($_POST['is_honours']) ? 1 : 0,
+                'is_minor' => isset($_POST['is_minor']) ? 1 : 0,
             ];
             if ($id <= 0) {
                 $data['user_id'] = (int)($_POST['user_id'] ?? 0);

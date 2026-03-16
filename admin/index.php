@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/../controllers/AdminController.php';
+require_once __DIR__ . '/../controllers/ImportController.php';
 
 require_role('admin');
 $controller = new AdminController();
@@ -39,6 +40,15 @@ switch ($page) {
         break;
     case 'reports':
         $controller->reports();
+        break;
+    case 'import':
+        (new ImportController())->index();
+        break;
+    case 'import_students':
+        (new ImportController())->importStudents();
+        break;
+    case 'import_assignments':
+        (new ImportController())->importAssignments();
         break;
     default:
         $controller->dashboard();

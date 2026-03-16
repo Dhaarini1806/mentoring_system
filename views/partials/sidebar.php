@@ -1,7 +1,7 @@
 <?php
 $role = $_SESSION['user']['role'] ?? '';
 ?>
-<div class="col-md-2 col-lg-2 bg-light border-end min-vh-100 sidebar">
+<div class="sidebar border-end">
     <div class="list-group list-group-flush pt-3">
         <?php if ($role === 'admin'): ?>
             <a href="<?php echo BASE_URL; ?>admin/index.php" class="list-group-item list-group-item-action">
@@ -21,6 +21,9 @@ $role = $_SESSION['user']['role'] ?? '';
             </a>
             <a href="<?php echo BASE_URL; ?>admin/index.php?page=reports" class="list-group-item list-group-item-action">
                 <i class="bi bi-file-earmark-bar-graph"></i> Reports
+            </a>
+            <a href="<?php echo BASE_URL; ?>admin/index.php?page=import" class="list-group-item list-group-item-action">
+                <i class="bi bi-cloud-arrow-up"></i> Bulk Import
             </a>
         <?php elseif ($role === 'mentor'): ?>
             <a href="<?php echo BASE_URL; ?>mentor/index.php" class="list-group-item list-group-item-action">
@@ -48,4 +51,4 @@ $role = $_SESSION['user']['role'] ?? '';
         <?php endif; ?>
     </div>
 </div>
-<div class="col-md-10 col-lg-10 p-4">
+<div class="content-area">
