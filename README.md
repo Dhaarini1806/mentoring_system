@@ -1,84 +1,113 @@
-Abstract
+# 🎓 Student Mentoring Management System (SMMS)
+### Institutional Grade Mentoring & Performance Analytics Portal
 
-The Student Mentoring Management System is a web-based portal for colleges to manage mentor–mentee relationships, student performance tracking, counseling documentation, and risk detection. It replaces manual workflows with a secure, role-based system for administrators, mentors, and students, providing real-time analytics and institutional reporting.
+[![PHP](https://img.shields.io/badge/PHP-8.x-777BB4?style=flat-square&logo=php)](https://php.net)
+[![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=flat-square&logo=mysql)](https://mysql.com)
+[![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-7952B3?style=flat-square&logo=bootstrap)](https://getbootstrap.com)
+[![License](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](LICENSE)
 
-Objectives
+---
 
-Digitize mentoring records: Store attendance, marks, counseling sessions, and mentor assignments in a centralized system.
-Enable proactive risk detection: Automatically classify students into risk categories based on academic and counseling indicators.
-Improve transparency: Provide dashboards and portals for admin, mentors, and students to access relevant data.
-Support decision-making: Offer analytics and exportable reports for institutional review and accreditation purposes.
-Ensure security and compliance: Implement secure authentication, access control, and auditing.
-System Architecture Explanation
+## 🌟 Project Overview
+The **Student Mentoring Management System** is a sophisticated, web-based institutional portal designed for RMK College of Engineering and Technology (RMKCET). It streamlines the mentor–mentee relationship by digitizing counseling documentation, academic tracking, and attendance monitoring. 
 
-Presentation Layer: HTML5, Bootstrap 5, and vanilla JavaScript render responsive dashboards, forms, tables, and charts for each user role.
-Business Logic Layer: PHP controllers (AdminController, MentorController, StudentController, AuthController, AnalyticsController) handle HTTP requests, orchestrate models, enforce validation, and perform redirections.
-Data Access Layer: PHP models encapsulate PDO-based prepared queries for each entity (Student, Mentor, Attendance, Marks, CounselingSession, MentorAssignment, AuditLog).
-Security Layer: config/config.php centralizes session management, CSRF tokens, input sanitization, and role-based authorization checks (require_role), with AuditLog providing traceability.
-ER Diagram Explanation (conceptual)
+Equipped with a **Proprietary Risk Engine**, the system proactively identifies students needing academic or emotional support, categorizing them into HIGH/MEDIUM/SAFE risk zones in real-time.
 
-Entities:
+---
 
-User: Attributes (id, username, password_hash, role, email) – base entity for all login accounts.
-Student: Attributes (id, user_id, roll_no, personal and academic details, risk_level). Relationship: many students to one user (1:1 in practice via FK).
-Mentor: Attributes (id, user_id, staff_id, name, department). Relationship: many mentors to one user (1:1 in practice).
-MentorAssignment: Associates mentor and student in a many-to-many relationship with uniqueness constraint.
-Attendance: Records monthly attendance per student (student_id, month_year, total_classes, attended_classes) – relationship: one student to many attendance records.
-Marks: Records subject-wise internal marks per student – relationship: one student to many marks records.
-CounselingSession: Captures mentoring sessions between mentor and student – relationships: many sessions to one mentor and one student.
-AuditLog: Logs user-level events (user_id, action, details).
-Keys and constraints ensure referential integrity (ON DELETE CASCADE for student and mentor children, SET NULL for audit logs).
+## ✨ Key Features
 
-DFD Level 0 Explanation
+### 🏛️ Institutional Branding & UI/UX
+- **RMKCET Theme**: Customized color palette (Deep Teal & Golden Yellow) and Poppins typography.
+- **🌓 Dynamic Mode**: Seamless toggle between Executive Light and Premium Dark modes.
+- **Side-by-Side Flex Layout**: Responsive dashboard design that ensures navigation and content are always accessible without stacking.
 
-Single external entity: User (admin, mentor, student).
-Single main process: Student Mentoring Management System.
-Main data stores: Users, Students, Mentors, MentorAssignment, Attendance, Marks, CounselingSessions, AuditLogs.
-Data flow: Users send login and operation requests; the system authenticates, accesses data stores, updates records, recalculates risk, and returns views and reports.
-DFD Level 1 Explanation (decomposed processes)
+### 📊 Advanced Data Management
+- **Bulk Import Utility**: Rapidly migrate large datasets from Excel/Google Sheets using CSV automation.
+- **Student Classification**: Specific tracking for **Honours**, **Minor**, and **Domain-specific** student cohorts.
+- **Smart Filtering**: Mentors can isolate specific groups (e.g., Honours students) for focused mark entry and updates.
 
-1.0 Authentication & Security: Handles login, session management, role checks, CSRF validation, and logs actions.
-2.0 Admin Management: CRUD operations for students and mentors, mentor assignment, high-risk listing, and report exports.
-3.0 Mentoring Operations: Mentor views assigned students, records attendance, marks, and counseling sessions; triggers risk recalculation.
-4.0 Student Self-Service: Students view mentor information, attendance, marks, risk status, counseling history; can update selected profile fields.
-5.0 Analytics & Reporting: Aggregates risk distribution, attendance trends, and mentor performance for visualizations and downloadable reports.
-Module Descriptions
+### 🧠 Smart Mentoring
+- **Automated Risk Engine**: Real-time risk assessment based on attendance, internal marks, and counseling recency.
+- **Counseling Logs**: Detailed history of interactions with action items and follow-up tracking.
+- **File Repository**: Secure storage for X/XII marksheets, Aadhar cards, and First Graduate certificates.
 
-Admin Module: Central dashboard with key metrics; CRUD screens for students and mentors; mentor-to-student assignment; risk-based student listing; Excel/PDF/printable reports.
-Mentor Module: Mentor dashboard with list of assigned students and their risk levels; forms for counseling sessions, attendance entry, marks entry; quick navigation to student profiles and progress tracking.
-Student Module: Student dashboard with risk badge, attendance and marks overview; profile management; detailed attendance, marks, and counseling history.
-Risk Engine: Backend component that uses attendance percentage, average internal marks, and counseling recency to classify students into HIGH/MEDIUM/SAFE categories.
-Analytics Module: Chart.js-based visualizations for risk distribution and attendance trends via JSON endpoints.
-Testing Scenarios
+---
 
-Authentication:
-Valid login for each role.
-Invalid credentials rejection.
-Unauthorized access redirection (e.g., student trying to open admin URL).
-CSRF and security:
-Submitting forms with missing/invalid CSRF token should fail.
-Session regeneration after login.
-Direct access to config and vendor folders blocked.
-Admin operations:
-Create/edit/delete student and mentor records.
-Assign multiple students to a mentor; ensure uniqueness constraint.
-View high-risk students list and verify risk logic.
-Generate Excel and PDF exports; validate file content.
-Mentor operations:
-Update attendance and verify overall percentage and risk update.
-Insert marks and confirm average mark calculation and risk update.
-Add counseling session and confirm last-session date and risk update (no-counseling rule).
-Student operations:
-View accurate attendance, marks, counseling history.
-Update profile fields safely and persistently.
-Analytics:
-Risk distribution chart matches underlying counts.
-Attendance trend chart matches average attendance per month.
-Future Scalability
+## 🛠️ Technology Stack
+| Layer | Technologies |
+| :--- | :--- |
+| **Frontend** | HTML5, CSS3 (Vanilla), JavaScript (ES6+), Bootstrap 5.3 |
+| **Backend** | PHP 8.x (MVC Architecture) |
+| **Database** | MySQL 8.0 (PDO for Security) |
+| **Utilities** | Chart.js (Analytics), TCPDF (PDF Generation) |
 
-Role extension: Add roles like HoD, principal, or parents with additional dashboards and read-only access to student data.
-Fine-grained access control: Introduce permission tables for module-level and field-level access.
-API layer: Wrap business logic with a REST API for integration with mobile apps or other campus systems.
-Bulk operations: Add CSV import for student/mentor data, and bulk attendance/marks upload.
-Performance optimizations: Implement caching for heavy dashboards and archived records; index tuning and query optimization for large student populations.
-Multi-college tenancy: Add an institution table and partition data by campus for cloud-hosted multi-tenant deployment.
+---
+
+## 🚀 Quick Start & Installation
+
+### Prerequisites
+- XAMPP / WAMP / MAMP (PHP 7.4+ & MySQL)
+- Modern Web Browser
+
+### Setup Instructions
+1.  **Clone the Repository**
+    ```bash
+    git clone https://github.com/Dhaarini1806/mentoring_system.git
+    cd mentoring_system
+    ```
+2.  **Database Configuration**
+    - Import `database/schema.sql` into your PHPMyAdmin/MySQL.
+    - Update `config/config.php` with your database credentials.
+3.  **Run Migrations** (Optional but recommended)
+    ```bash
+    php database/migrate_students_columns.php
+    php database/add_student_classification.php
+    ```
+4.  **Admin Login**
+    - Navigate to `http://localhost/mentoring_system/admin`
+    - Use default credentials (provided in setup phase).
+
+---
+
+## 👥 User Roles
+
+### 👨‍💼 Administrator
+- Full control over Student & Mentor CRUD operations.
+- Bulk import of datasets and mentor assignments.
+- Global view of high-risk students and institutional reports.
+
+### 👨‍🏫 Mentor
+- Access to delegated mentee list.
+- Entry points for Marks, Attendance, and Counseling sessions.
+- Filtered views for specialized certifications (Honours/Minors).
+
+### 🎓 Student
+- Personalized dashboard with real-time risk status.
+- Self-service profile updates and file uploads.
+- Complete transparency of academic history and counseling records.
+
+---
+
+## 📂 Project Structure
+```text
+├── admin/          # Admin-specific routes
+├── assets/         # CSS (Themed), Images (RMKCET Logos), JS
+├── config/         # Database and Security constants
+├── controllers/    # MVC Controllers (Auth, Admin, Mentor, Student, Import)
+├── database/       # SQL Schemas and Migration scripts
+├── models/         # Database Model classes (PDO)
+├── views/          # Themed UI Partials and Pages
+└── uploads/        # Secure file storage for student documents
+```
+
+---
+
+## 🛡️ Security
+- **PDO Prepared Statements**: Full protection against SQL Injection.
+- **CSRF Protection**: Token-based validation on all stateful forms.
+- **Audit Logging**: Traceability for all critical user actions.
+- **Role Guards**: Strict server-side role verification for every request.
+
+---
+© 2026 RMK College of Engineering and Technology. All Rights Reserved.
