@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const baseUrl = document.querySelector('base') ? document.querySelector('base').href : window.location.origin + '/mentor_portal/';
+    const baseUrl = document.querySelector('base') ? document.querySelector('base').href : window.location.origin + '/mentoring_system/';
 
     // Risk chart
     const riskCtx = document.getElementById('riskChart');

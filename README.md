@@ -57,16 +57,17 @@ Equipped with a **Proprietary Risk Engine**, the system proactively identifies s
     cd mentoring_system
     ```
 2.  **Database Configuration**
-    - Import `database/schema.sql` into your PHPMyAdmin/MySQL.
     - Update `config/config.php` with your database credentials.
-3.  **Run Migrations** (Optional but recommended)
-    ```bash
-    php database/migrate_students_columns.php
-    php database/add_student_classification.php
-    ```
+3.  **Run Setup & Migrations**
+    - Open `http://localhost:8080/mentoring_system/setup_users.php` in your browser to initialize users.
+    - (Optional) Run additional migrations:
+      ```bash
+      php database/migrate_students_columns.php
+      php database/add_student_classification.php
+      ```
 4.  **Admin Login**
-    - Navigate to `http://localhost/mentoring_system/admin`
-    - Use default credentials (provided in setup phase).
+    - Navigate to `http://localhost:8080/mentoring_system/`
+    - Use default credentials: `admin` / `Admin@123`.
 
 ---
 
